@@ -1,0 +1,2 @@
+// ASWebAuthenticationSession
+OTHER_LDFLAGS = $(inherited) -framework AuthenticationServices

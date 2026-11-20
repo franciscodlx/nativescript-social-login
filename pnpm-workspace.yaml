@@ -1,0 +1,19 @@
+packages:
+  - 'packages/*'
+  - 'examples/*'
+  - 'tools/*'
+
+# Install scripts we do not need: prebuilt binaries, telemetry prompts and
+# the hooks @nativescript/core copies into apps (examples/demo has them).
+allowBuilds:
+  '@nativescript/core': false
+  '@parcel/watcher': false
+  core-js-pure: false
+  esbuild: false
+  lmdb: false
+  msgpackr-extract: false
+  nativescript: false
+
+# The NativeScript CLI and its webpack config look for plugins in a flat
+# node_modules (platforms/, nativescript key in package.json).
+nodeLinker: hoisted

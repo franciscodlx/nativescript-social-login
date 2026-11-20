@@ -1,0 +1,52 @@
+{
+  "name": "@franciscodlxdev/nativescript-auth-core",
+  "version": "0.1.0",
+  "description": "OAuth 2.0 + PKCE in the system browser for NativeScript (Angular, Vue, plain TS): the core of the social login family",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "platforms",
+    "!**/__tests__",
+    "!**/__fixtures__"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "nativescript": {
+    "platforms": {
+      "ios": "9.0.0",
+      "android": "9.0.0"
+    }
+  },
+  "keywords": [
+    "nativescript",
+    "nativescript-angular",
+    "nativescript-plugin",
+    "oauth",
+    "oauth2",
+    "pkce",
+    "oidc",
+    "social-login"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/franciscodlx/nativescript-social-login.git",
+    "directory": "packages/auth-core"
+  },
+  "author": "Francisco (https://github.com/franciscodlx)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/franciscodlx/nativescript-social-login/issues"
+  },
+  "homepage": "https://github.com/franciscodlx/nativescript-social-login/tree/main/packages/auth-core#readme",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "peerDependencies": {
+    "@nativescript/core": ">=9.0.0"
+  }
+}

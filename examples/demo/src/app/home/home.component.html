@@ -1,0 +1,54 @@
+<ActionBar title="Social login · NativeScript"></ActionBar>
+
+<ScrollView>
+  <StackLayout class="page">
+    <Label class="note" textWrap="true" text="Providers without a client ID in src/app/config.ts use the local mocks."></Label>
+
+    @for (provider of providers; track provider.id) {
+      <Button
+        class="provider"
+        [automationText]="'sign-in-' + provider.id"
+        [isEnabled]="!busy()"
+        [backgroundColor]="provider.color"
+        [text]="'Sign in with ' + provider.label + (provider.real ? '' : ' (mock)')"
+        (tap)="signIn(provider)"
+      ></Button>
+    }
+
+    <Label class="section" [text]="'Microsoft Entra (native auth)' + (entraReal ? '' : ' · mock')"></Label>
+    <TextField class="field" hint="Email" keyboardType="email" autocapitalizationType="none" [(ngModel)]="email"></TextField>
+    <TextField class="field" hint="Password (empty: email code)" [secure]="true" [(ngModel)]="password"></TextField>
+    @if (entraStep(); as step) {
+      <TextField class="field" [hint]="'Code sent to ' + (step.sentTo ?? step.username)" keyboardType="number" [(ngModel)]="code"></TextField>
+      <Button class="provider" backgroundColor="#0078d4" automationText="entra-code" [isEnabled]="!busy()" text="Submit code" (tap)="entraSubmitCode()"></Button>
+    } @else {
+      <Button class="provider" backgroundColor="#0078d4" automationText="entra-sign-in" [isEnabled]="!busy()" text="Sign in with Entra" (tap)="entraSignIn()"></Button>
+    }
+
+    @switch (session().status) {
+      @case ('working') {
+        <ActivityIndicator [busy]="true" margin="16"></ActivityIndicator>
+      }
+      @case ('failed') {
+        @if (session(); as s) {
+          @if (s.status === 'failed') {
+            <Label class="bad" textWrap="true" automationText="error" [text]="s.message" margin="16 0"></Label>
+          }
+        }
+      }
+      @case ('done') {
+        @if (session(); as s) {
+          @if (s.status === 'done') {
+            <StackLayout automationText="result" margin="16 0">
+              <Label class="ok" [text]="'SIGNED IN (' + s.result.provider + ')'"></Label>
+              <Label class="mono" [text]="'id: ' + s.result.id"></Label>
+              <Label class="mono" [text]="'name: ' + s.result.name"></Label>
+              <Label class="mono" [text]="'username: ' + s.result.username"></Label>
+              <Label class="mono" [text]="'email: ' + s.result.email"></Label>
+            </StackLayout>
+          }
+        }
+      }
+    }
+  </StackLayout>
+</ScrollView>

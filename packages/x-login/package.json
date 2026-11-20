@@ -1,0 +1,57 @@
+{
+  "name": "@franciscodlxdev/nativescript-x-login",
+  "version": "0.1.0",
+  "description": "Sign in with X (Twitter) for NativeScript (Angular, Vue, plain TS): OAuth 2.0 + PKCE in the system browser, as a public client. No consumer secret in the app.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "!**/__tests__",
+    "!**/__fixtures__"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "keywords": [
+    "nativescript",
+    "nativescript-angular",
+    "x",
+    "twitter",
+    "twitter-login",
+    "twitter-signin",
+    "oauth2",
+    "pkce",
+    "social-login"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/franciscodlx/nativescript-social-login.git",
+    "directory": "packages/x-login"
+  },
+  "author": "Francisco (https://github.com/franciscodlx)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/franciscodlx/nativescript-social-login/issues"
+  },
+  "homepage": "https://github.com/franciscodlx/nativescript-social-login/tree/main/packages/x-login#readme",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "peerDependencies": {
+    "@franciscodlxdev/nativescript-auth-core": "^0.1.0"
+  },
+  "devDependencies": {
+    "@franciscodlxdev/nativescript-auth-core": "workspace:*"
+  }
+}

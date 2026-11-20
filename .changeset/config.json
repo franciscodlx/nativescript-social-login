@@ -1,0 +1,21 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config/schema.json",
+  "changelog": "@changesets/cli/changelog",
+  "commit": false,
+  "fixed": [],
+  "linked": [],
+  "access": "public",
+  "baseBranch": "main",
+  "updateInternalDependencies": "patch",
+  "ignore": [
+    "@franciscodlxdev/linkedin-backend-example",
+    "@franciscodlxdev/mercadolibre-backend-example",
+    "@franciscodlxdev/mock-entra",
+    "@franciscodlxdev/mock-idp",
+    "@franciscodlxdev/nativescript-social-login-demo",
+    "@franciscodlxdev/presets-backend-example",
+    "@franciscodlxdev/telegram-backend-example",
+    "@franciscodlxdev/tiktok-backend-example",
+    "@franciscodlxdev/twitch-backend-example"
+  ]
+}
