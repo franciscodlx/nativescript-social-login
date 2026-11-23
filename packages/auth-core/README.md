@@ -1,5 +1,7 @@
 # @franciscodlxdev/nativescript-auth-core
 
+<p align="center"><img src="https://raw.githubusercontent.com/franciscodlx/nativescript-social-login/main/.github/assets/demo.gif" width="260" alt="Demo: iniciar sesión en el navegador del sistema y volver a la app"></p>
+
 OAuth 2.0 + PKCE para NativeScript (iOS, Android) en el navegador del sistema: `ASWebAuthenticationSession` en iOS y Custom Tabs en Android. Sin WebView y sin `clientSecret` en la app. Es el núcleo de la familia: cada proveedor (LinkedIn, X, GitHub, …) es un paquete aparte que solo aporta endpoints, scopes y el mapeo del perfil.
 
 ## Compatibilidad

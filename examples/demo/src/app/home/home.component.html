@@ -4,6 +4,32 @@
   <StackLayout class="page">
     <Label class="note" textWrap="true" text="Providers without a client ID in src/app/config.ts use the local mocks."></Label>
 
+    @switch (session().status) {
+      @case ('working') {
+        <ActivityIndicator [busy]="true" margin="16"></ActivityIndicator>
+      }
+      @case ('failed') {
+        @if (session(); as s) {
+          @if (s.status === 'failed') {
+            <Label class="bad" textWrap="true" automationText="error" [text]="s.message" margin="0 0 12 0"></Label>
+          }
+        }
+      }
+      @case ('done') {
+        @if (session(); as s) {
+          @if (s.status === 'done') {
+            <StackLayout automationText="result" margin="0 0 12 0">
+              <Label class="ok" [text]="'SIGNED IN (' + s.result.provider + ')'"></Label>
+              <Label class="mono" [text]="'id: ' + s.result.id"></Label>
+              <Label class="mono" [text]="'name: ' + s.result.name"></Label>
+              <Label class="mono" [text]="'username: ' + s.result.username"></Label>
+              <Label class="mono" [text]="'email: ' + s.result.email"></Label>
+            </StackLayout>
+          }
+        }
+      }
+    }
+
     @for (provider of providers; track provider.id) {
       <Button
         class="provider"
@@ -25,30 +51,5 @@
       <Button class="provider" backgroundColor="#0078d4" automationText="entra-sign-in" [isEnabled]="!busy()" text="Sign in with Entra" (tap)="entraSignIn()"></Button>
     }
 
-    @switch (session().status) {
-      @case ('working') {
-        <ActivityIndicator [busy]="true" margin="16"></ActivityIndicator>
-      }
-      @case ('failed') {
-        @if (session(); as s) {
-          @if (s.status === 'failed') {
-            <Label class="bad" textWrap="true" automationText="error" [text]="s.message" margin="16 0"></Label>
-          }
-        }
-      }
-      @case ('done') {
-        @if (session(); as s) {
-          @if (s.status === 'done') {
-            <StackLayout automationText="result" margin="16 0">
-              <Label class="ok" [text]="'SIGNED IN (' + s.result.provider + ')'"></Label>
-              <Label class="mono" [text]="'id: ' + s.result.id"></Label>
-              <Label class="mono" [text]="'name: ' + s.result.name"></Label>
-              <Label class="mono" [text]="'username: ' + s.result.username"></Label>
-              <Label class="mono" [text]="'email: ' + s.result.email"></Label>
-            </StackLayout>
-          }
-        }
-      }
-    }
   </StackLayout>
 </ScrollView>
