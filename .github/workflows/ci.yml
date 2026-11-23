@@ -28,6 +28,8 @@ jobs:
       - name: Mocks and example backends
         run: for dir in tools/*/; do (cd "$dir" && node --test) || exit 1; done
       - run: pnpm --filter @franciscodlxdev/nativescript-social-login-demo typecheck
+      - name: Packages publish cleanly (dry run)
+        run: node scripts/release.mjs --dry-run
 
   android:
     name: Demo (Android)
