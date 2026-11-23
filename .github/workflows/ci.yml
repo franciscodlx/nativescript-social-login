@@ -51,6 +51,12 @@ jobs:
           cache: gradle
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
+      # `ns build` runs ns doctor first, which fails without the SDK's emulator
+      # package ("The Android SDK is not installed or is not configured
+      # properly"). The runner image no longer ships it; it is only checked
+      # with `emulator -help`, never started.
+      - name: Android emulator package (required by ns doctor)
+        run: '"$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install emulator'
       - name: Build
         working-directory: examples/demo
         run: pnpm exec ns build android
