@@ -1,7 +1,9 @@
 name: CI
+
+# Pull requests only. main takes changes through merged pull requests alone
+# (ruleset: PR required, these checks must pass), so the merged code already
+# passed here; release.yml publishes it without running the suite again.
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
 
@@ -15,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
       - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
@@ -28,13 +30,15 @@ jobs:
       - name: Mocks and example backends
         run: for dir in tools/*/; do (cd "$dir" && node --test) || exit 1; done
       - run: pnpm --filter @franciscodlxdev/nativescript-social-login-demo typecheck
+      - name: Packages publish cleanly (dry run)
+        run: node scripts/release.mjs --dry-run
 
   android:
     name: Demo (Android)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
       - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
@@ -43,8 +47,16 @@ jobs:
         with:
           distribution: zulu
           java-version: '17'
+          # Gradle distribution and plugins: fewer downloads that can fail mid-run.
+          cache: gradle
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
+      # `ns build` runs ns doctor first, which fails without the SDK's emulator
+      # package ("The Android SDK is not installed or is not configured
+      # properly"). The runner image no longer ships it; it is only checked
+      # with `emulator -help`, never started.
+      - name: Android emulator package (required by ns doctor)
+        run: '"$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install emulator'
       - name: Build
         working-directory: examples/demo
         run: pnpm exec ns build android
@@ -54,7 +66,7 @@ jobs:
     runs-on: macos-26
     steps:
       - uses: actions/checkout@v7
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
       - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
