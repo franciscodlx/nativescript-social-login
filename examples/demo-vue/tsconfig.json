@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "target": "ES2020",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "lib": ["ESNext", "dom"],
+    "noEmitHelpers": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "paths": {
+      "~/*": ["./src/*"],
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src", "types", "references.d.ts"],
+  "exclude": ["node_modules", "platforms"],
+  "vueCompilerOptions": {
+    "lib": "nativescript-vue"
+  }
+}
