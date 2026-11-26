@@ -1,0 +1,58 @@
+{
+  "name": "@franciscodlxdev/nativescript-social-login-vue",
+  "version": "0.1.0",
+  "description": "Vue 3 composable for the NativeScript social login family (NativeScript-Vue): reactive loading, result and error around any provider's signIn / signOut.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "!**/__tests__",
+    "!**/__fixtures__"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "keywords": [
+    "nativescript",
+    "nativescript-vue",
+    "vue",
+    "composable",
+    "oauth2",
+    "pkce",
+    "social-login"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/franciscodlx/nativescript-social-login.git",
+    "directory": "packages/vue"
+  },
+  "author": "Francisco (https://github.com/franciscodlx)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/franciscodlx/nativescript-social-login/issues"
+  },
+  "homepage": "https://github.com/franciscodlx/nativescript-social-login/tree/main/packages/vue#readme",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "peerDependencies": {
+    "@franciscodlxdev/nativescript-auth-core": "^0.1.1",
+    "nativescript-vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "@franciscodlxdev/nativescript-auth-core": "workspace:*",
+    "@vue/runtime-core": "^3.5.0",
+    "nativescript-vue": "^3.1.3"
+  }
+}

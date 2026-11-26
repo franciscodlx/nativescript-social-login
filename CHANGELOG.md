@@ -2,6 +2,13 @@
 
 Cada paquete lleva su propio historial en `packages/*/CHANGELOG.md`; este archivo resume las versiones de la familia. El formato sigue [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y las versiones, [SemVer](https://semver.org/lang/es/).
 
+## [Sin publicar]
+
+### Agregado
+
+- `@franciscodlxdev/nativescript-social-login-vue` 0.1.0: composable `useProviderLogin` para NativeScript-Vue.
+- `examples/demo-vue`: la app demo con NativeScript-Vue 3, compilada en CI para iOS y Android junto a la de Angular.
+
 ## [0.1.0] - 2026-11-20
 
 Primera versión pública de los 9 paquetes para NativeScript.

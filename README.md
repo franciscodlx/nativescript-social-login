@@ -21,7 +21,7 @@ ns plugin add @franciscodlxdev/nativescript-auth-core
 ns plugin add @franciscodlxdev/nativescript-x-login
 ```
 
-En Android declara el esquema de tu app en la actividad principal (`App_Resources/Android/src/main/AndroidManifest.xml`); el bloque está en [`nativescript-auth-core`](packages/auth-core#instalación). Funciona con Angular, Vue, Solid o TypeScript sin framework.
+En Android declara el esquema de tu app en la actividad principal (`App_Resources/Android/src/main/AndroidManifest.xml`); el bloque está en [`nativescript-auth-core`](packages/auth-core#instalación). Funciona con Angular, Vue, Solid o TypeScript sin framework; para NativeScript-Vue hay además un composable, [`nativescript-social-login-vue`](packages/vue).
 
 ## Ejemplo mínimo
 
@@ -54,6 +54,7 @@ X es un cliente público, así que este ejemplo no necesita backend. LinkedIn, G
 | [`@franciscodlxdev/nativescript-telegram-login`](packages/telegram-login)    | Telegram con OpenID Connect                                        | Probado con Telegram |
 | [`@franciscodlxdev/nativescript-tiktok-login`](packages/tiktok-login)        | TikTok Login Kit (flujo web)                                       | Probado con TikTok (sandbox) |
 | [`@franciscodlxdev/nativescript-entra-native-auth`](packages/entra-native-auth) | Entra External ID: alta, login y reset sin navegador            | Probado con mock   |
+| [`@franciscodlxdev/nativescript-social-login-vue`](packages/vue)            | Composable `useProviderLogin` para NativeScript-Vue                | Probado con mock (Android) |
 
 "Probado con mock": iOS (simulador) y Android (emulador) contra `tools/mock-idp` y los backends de `tools/`. "Probado con <proveedor>": además, con una cuenta real en iPhone.
 
@@ -65,6 +66,7 @@ Cada proveedor es un paquete independiente (versión, changelog y publicación p
 packages/auth-core          núcleo (acceso nativo desde TypeScript: ASWebAuthenticationSession y Custom Tabs)
 packages/<proveedor>        un paquete TypeScript por proveedor sobre el núcleo
 examples/demo               app NativeScript + Angular con todos los proveedores
+examples/demo-vue           la misma app con NativeScript-Vue (X usa el composable useProviderLogin)
 tools/mock-idp              proveedor OAuth/OIDC local, sin credenciales reales
 tools/mock-entra            imita la API de native authentication de Entra
 tools/<proveedor>-backend   backends de ejemplo: redirect https y canje con el secret

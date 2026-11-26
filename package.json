@@ -12,7 +12,7 @@
     "build": "pnpm -r --filter \"./packages/*\" run build",
     "typecheck": "pnpm -r --filter \"./packages/*\" run typecheck",
     "test": "vitest run",
-    "lint": "eslint packages examples/demo/src",
+    "lint": "eslint packages examples/demo/src examples/demo-vue/src",
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "pnpm build && node scripts/release.mjs"

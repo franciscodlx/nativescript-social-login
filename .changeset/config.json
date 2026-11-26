@@ -13,6 +13,7 @@
     "@franciscodlxdev/mock-entra",
     "@franciscodlxdev/mock-idp",
     "@franciscodlxdev/nativescript-social-login-demo",
+    "@franciscodlxdev/nativescript-social-login-demo-vue",
     "@franciscodlxdev/presets-backend-example",
     "@franciscodlxdev/telegram-backend-example",
     "@franciscodlxdev/tiktok-backend-example",

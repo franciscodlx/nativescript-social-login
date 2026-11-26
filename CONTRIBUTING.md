@@ -27,7 +27,7 @@ El workspace usa `nodeLinker: hoisted` (ver `pnpm-workspace.yaml`): el CLI de Na
    | `tools/mock-entra`              | 4700   | Entra (código `12345678`)         |
 
    `node server.mjs` en cada carpeta (`node server.js` en `mock-entra`). X no necesita backend: es cliente público.
-3. App: `pnpm --filter @franciscodlxdev/nativescript-social-login-demo ios` o `android` (`ns run`: compila y abre en el simulador o emulador).
+3. App: `pnpm --filter @franciscodlxdev/nativescript-social-login-demo ios` o `android` (`ns run`: compila y abre en el simulador o emulador). La versión NativeScript-Vue es `@franciscodlxdev/nativescript-social-login-demo-vue` (`examples/demo-vue`, configuración en `src/config.ts`); registra los mismos esquemas, así que en Android deja instalada solo una de las dos.
 
 En el emulador de Android la demo llega a los mocks por `10.0.2.2`; en el simulador de iOS, por `localhost`.
 
